@@ -8,6 +8,7 @@ from models import tran
 from models import hinsyu  
 from models import urisaki
 from models import kaisaki
+from models import buka
 
 app = FastAPI()
 
@@ -22,6 +23,11 @@ app.add_middleware(
 @app.get('/')
 def hello():
   return 'hello'
+
+app.include_router(
+  buka.router, 
+  prefix='/buka', 
+)
 
 app.include_router(
   table_describe.router, 
